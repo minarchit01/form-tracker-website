@@ -265,8 +265,7 @@ function App() {
 
         <div className="hero-grid" id="top">
           <div className="hero-copy">
-            <p className="eyebrow">Deadlift review from the video you already take</p>
-            <h1 id="hero-title">Upload your deadlift. Get clear form cues before your next set.</h1>
+            <h1 id="hero-title">Get clear form cues before your next set.</h1>
             <p className="hero-lede">
               FormTracker turns gym recordings into quick, practical feedback on the pieces
               lifters actually care about: bar path, back angle, hip position, and tempo.
