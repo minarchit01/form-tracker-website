@@ -23,16 +23,16 @@ const benefits = [
 
 const steps = [
   {
-    title: "Upload your set",
-    copy: "Drop in a deadlift video from your phone after training.",
+    title: "Point",
+    copy: "Set your phone up facing you. No special equipment needed — just your existing camera.",
   },
   {
-    title: "Review clear cues",
-    copy: "FormTracker highlights the moments that need attention.",
+    title: "Lift",
+    copy: "Do your set as normal. Repp analyzes your movement in real time as you lift.",
   },
   {
-    title: "Lift with intent",
-    copy: "Take the next session in with fewer guesses and sharper focus.",
+    title: "Fix",
+    copy: "Get instant feedback on what to correct — so every rep builds better movement.",
   },
 ];
 
@@ -188,7 +188,7 @@ function App() {
       }
 
       setFormState("success");
-      setMessage("You are on the list. We will send the first look soon.");
+      setMessage("You're on the list. We'll be in touch.");
       setEmail("");
     } catch {
       setFormState("error");
@@ -210,7 +210,7 @@ function App() {
             name="email"
             inputMode="email"
             autoComplete="email"
-            placeholder="you@example.com"
+            placeholder="your@email.com"
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
@@ -223,7 +223,7 @@ function App() {
           />
         </div>
         <button className="submit-button" type="submit" disabled={formState === "loading"}>
-          <span>{formState === "loading" ? "Joining" : "Join waitlist"}</span>
+          <span>{formState === "loading" ? "Joining…" : "Get early access"}</span>
           <ArrowIcon />
         </button>
       </form>
@@ -238,7 +238,7 @@ function App() {
         role={formState === "error" ? "alert" : "status"}
         aria-live="polite"
       >
-        {message || "Join the early list for first access to upload-based form review."}
+        {message}
       </div>
     );
   }
@@ -247,11 +247,8 @@ function App() {
     <main className="site-shell">
       <section className="hero-section" aria-labelledby="hero-title">
         <nav className="top-nav" aria-label="Primary navigation">
-          <a className="brand-mark" href="#top" aria-label="FormTracker home">
-            <span className="brand-icon">
-              <PulseIcon />
-            </span>
-            <span>FormTracker</span>
+          <a className="brand-mark" href="#top" aria-label="Repp home">
+            <span>rep</span><span style={{ color: 'var(--accent)' }}>p</span>
           </a>
           <div className="nav-actions">
             <a className="nav-link" href="#how-it-works">
@@ -265,10 +262,10 @@ function App() {
 
         <div className="hero-grid" id="top">
           <div className="hero-copy">
-            <h1 id="hero-title">Get clear form cues before your next set.</h1>
+            <p className="eyebrow">Waitlist open</p>
+            <h1 id="hero-title">Form. Corrected.</h1>
             <p className="hero-lede">
-              FormTracker turns gym recordings into quick, practical feedback on the pieces
-              lifters actually care about: bar path, back angle, hip position, and tempo.
+              Real-time computer vision that analyzes your movement and fixes your form.
             </p>
 
             {renderWaitlistForm("hero-email", "hero-form-message")}
@@ -288,7 +285,7 @@ function App() {
         <div className="steps-grid">
           {steps.map((step, index) => (
             <article className="step-item" key={step.title}>
-              <span>{index + 1}</span>
+              <span>0{index + 1}</span>
               <h3>{step.title}</h3>
               <p>{step.copy}</p>
             </article>
@@ -320,7 +317,7 @@ function App() {
             <p className="eyebrow">Your training videos stay yours</p>
             <h2>Private uploads, practical feedback.</h2>
             <p>
-              FormTracker is being built for personal gym footage, with a simple promise:
+              Repp is being built for personal gym footage, with a simple promise:
               review the lift, return the cues, and keep control clear.
             </p>
           </div>
@@ -332,7 +329,7 @@ function App() {
           <p className="eyebrow">Early access</p>
           <h2 id="join-title">Bring better cues to your next deadlift day.</h2>
           <p>
-            Join the waitlist and get notified when FormTracker opens for first uploads.
+            Join the waitlist and get first access when Repp opens.
           </p>
           {renderWaitlistForm("join-email", "join-form-message")}
           {renderFormMessage("join-form-message")}
@@ -344,7 +341,7 @@ function App() {
 
 function ProductPreview() {
   return (
-    <aside className="product-preview" aria-label="FormTracker deadlift review preview">
+    <aside className="product-preview" aria-label="Repp deadlift review preview">
       <div className="preview-toolbar">
         <div>
           <span className="toolbar-dot active" />
