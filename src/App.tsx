@@ -6,21 +6,6 @@ type IconProps = {
   className?: string;
 };
 
-const benefits = [
-  {
-    title: "Form cues you can use",
-    copy: "See simple notes on bar path, back angle, hip position, and tempo without digging through a full coaching report.",
-  },
-  {
-    title: "Built around your videos",
-    copy: "Record the same way you already do at the gym, upload the set, and get feedback while the lift is still fresh.",
-  },
-  {
-    title: "Progress that stays visible",
-    copy: "Compare sessions over time so cleaner reps are easier to spot and repeat.",
-  },
-];
-
 const steps = [
   {
     title: "Point",
@@ -72,74 +57,30 @@ function ArrowIcon({ className }: IconProps) {
   );
 }
 
-function UploadIcon({ className }: IconProps) {
+function HeroBackground() {
   return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 16V4" />
-      <path d="m7 9 5-5 5 5" />
-      <path d="M20 16v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3" />
-    </svg>
+    <div className="hero-skeleton" aria-hidden="true">
+      <div className="deadlift-lifter">
+        <span className="head" />
+        <span className="torso" />
+        <span className="upper-arm left" />
+        <span className="upper-arm right" />
+        <span className="forearm left" />
+        <span className="forearm right" />
+        <span className="thigh left" />
+        <span className="thigh right" />
+        <span className="shin left" />
+        <span className="shin right" />
+      </div>
+    </div>
   );
 }
 
-function PulseIcon({ className }: IconProps) {
+function Wordmark() {
   return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 12h4l2-6 4 12 2-6h6" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }: IconProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m5 12 4 4L19 6" />
-    </svg>
-  );
-}
-
-function ShieldIcon({ className }: IconProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-      <path d="m9 12 2 2 4-5" />
-    </svg>
+    <a className="brand-mark" href="#top" aria-label="Repp home">
+      <span>rep</span><span style={{ color: "var(--accent)" }}>p</span>
+    </a>
   );
 }
 
@@ -244,170 +185,67 @@ function App() {
   }
 
   return (
-    <main className="site-shell">
-      <section className="hero-section" aria-labelledby="hero-title">
-        <nav className="top-nav" aria-label="Primary navigation">
-          <a className="brand-mark" href="#top" aria-label="Repp home">
-            <span>rep</span><span style={{ color: 'var(--accent)' }}>p</span>
-          </a>
-          <div className="nav-actions">
-            <a className="nav-link" href="#how-it-works">
-              How it works
-            </a>
-            <a className="nav-link" href="#join">
-              Join
-            </a>
+    <>
+      <main className="site-shell">
+        <section className="hero-section" aria-labelledby="hero-title">
+          <HeroBackground />
+
+          <nav className="top-nav" aria-label="Primary navigation">
+            <Wordmark />
+          </nav>
+
+          <div className="hero-grid" id="top">
+            <div className="hero-copy">
+              <div className="waitlist-badge">
+                <span className="badge-dot" />
+                <span>Waitlist open</span>
+              </div>
+              <h1 id="hero-title">Form.<br />Corrected.</h1>
+              <p className="hero-lede">
+                Real-time computer vision that analyzes your movement and fixes your form.
+              </p>
+              {renderWaitlistForm("hero-email", "hero-form-message")}
+              {renderFormMessage("hero-form-message")}
+            </div>
           </div>
-        </nav>
+        </section>
 
-        <div className="hero-grid" id="top">
-          <div className="hero-copy">
-            <p className="eyebrow">Waitlist open</p>
-            <h1 id="hero-title">Form. Corrected.</h1>
-            <p className="hero-lede">
-              Real-time computer vision that analyzes your movement and fixes your form.
-            </p>
-
-            {renderWaitlistForm("hero-email", "hero-form-message")}
-            {renderFormMessage("hero-form-message")}
+        <section className="steps-section" id="how-it-works" aria-label="How it works">
+          <div className="section-heading align-left">
+            <p className="eyebrow">How it works</p>
           </div>
 
-          <ProductPreview />
-        </div>
-      </section>
+          <div className="steps-grid">
+            {steps.map((step, index) => (
+              <article className="step-item" key={step.title}>
+                <span>0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section className="steps-section" id="how-it-works" aria-labelledby="steps-title">
-        <div className="section-heading align-left">
-          <p className="eyebrow">How it works</p>
-          <h2 id="steps-title">A faster feedback loop for the sets worth reviewing.</h2>
-        </div>
-
-        <div className="steps-grid">
-          {steps.map((step, index) => (
-            <article className="step-item" key={step.title}>
-              <span>0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="feature-section" aria-labelledby="features-title">
-        <div className="section-heading">
-          <p className="eyebrow">Core benefits</p>
-          <h2 id="features-title">Helpful enough for training day. Simple enough to use every week.</h2>
-        </div>
-
-        <div className="feature-grid">
-          {benefits.map((benefit) => (
-            <article className="feature-card" key={benefit.title}>
-              <CheckIcon className="feature-icon" />
-              <h3>{benefit.title}</h3>
-              <p>{benefit.copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="privacy-band" aria-label="Video privacy reassurance">
-        <div className="privacy-copy">
-          <ShieldIcon />
-          <div>
-            <p className="eyebrow">Your training videos stay yours</p>
-            <h2>Private uploads, practical feedback.</h2>
+        <section className="final-cta" id="join" aria-labelledby="join-title">
+          <div className="final-cta-inner">
+            <h2 id="join-title">
+              Every rep.<br />
+              <span style={{ color: "var(--accent)" }}>Perfected.</span>
+            </h2>
             <p>
-              Repp is being built for personal gym footage, with a simple promise:
-              review the lift, return the cues, and keep control clear.
+              Join the waitlist and be among the first to train with real-time AI form coaching.
             </p>
+            {renderWaitlistForm("join-email", "join-form-message")}
+            {renderFormMessage("join-form-message")}
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <section className="final-cta" id="join" aria-labelledby="join-title">
-        <div className="final-cta-inner">
-          <p className="eyebrow">Early access</p>
-          <h2 id="join-title">Bring better cues to your next deadlift day.</h2>
-          <p>
-            Join the waitlist and get first access when Repp opens.
-          </p>
-          {renderWaitlistForm("join-email", "join-form-message")}
-          {renderFormMessage("join-form-message")}
-        </div>
-      </section>
-    </main>
-  );
-}
-
-function ProductPreview() {
-  return (
-    <aside className="product-preview" aria-label="Repp deadlift review preview">
-      <div className="preview-toolbar">
-        <div>
-          <span className="toolbar-dot active" />
-          <span className="toolbar-dot" />
-          <span className="toolbar-dot" />
-        </div>
-        <span className="toolbar-label">Deadlift review</span>
-      </div>
-
-      <div className="video-panel">
-        <div className="video-frame">
-          <div className="floor-line" />
-          <div className="barbell" />
-          <div className="bar-path" />
-          <div className="deadlift-lifter">
-            <span className="head" />
-            <span className="torso" />
-            <span className="upper-arm left" />
-            <span className="upper-arm right" />
-            <span className="forearm left" />
-            <span className="forearm right" />
-            <span className="thigh left" />
-            <span className="thigh right" />
-            <span className="shin left" />
-            <span className="shin right" />
-          </div>
-          <span className="feedback-pin back">
-            <PulseIcon />
-          </span>
-          <span className="feedback-pin hip">
-            <CheckIcon />
-          </span>
-          <div className="rep-timeline" aria-hidden="true">
-            <span className="active" />
-            <span />
-            <span />
-            <span className="short" />
-          </div>
-        </div>
-
-        <div className="review-list">
-          <div className="review-row strong">
-            <span>Back angle</span>
-            <strong>Steady</strong>
-          </div>
-          <div className="review-row">
-            <span>Bar path</span>
-            <strong>Keep close</strong>
-          </div>
-          <div className="review-row">
-            <span>Tempo</span>
-            <strong>Smooth pull</strong>
-          </div>
-        </div>
-      </div>
-
-      <div className="upload-card">
-        <div className="upload-icon">
-          <UploadIcon />
-        </div>
-        <div>
-          <span>Latest upload</span>
-          <strong>Deadlift set 3, side angle</strong>
-        </div>
-      </div>
-    </aside>
+      <footer className="site-footer">
+        <Wordmark />
+        <p className="footer-copy">© 2026 Repp. All rights reserved.</p>
+      </footer>
+    </>
   );
 }
 
