@@ -72,118 +72,6 @@ a {
   z-index: 1;
 }
 
-/* ─── Animated stick figure ─────────────────────────────────────────────────── */
-
-.hero-skeleton {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  z-index: 0;
-  width: 240px;
-  height: 360px;
-  transform: translateY(-50%);
-  opacity: 0.09;
-  pointer-events: none;
-}
-
-.lifter-svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-/* Stroke styling for all SVG figure elements */
-.lifter-svg line {
-  stroke: var(--ink);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-}
-
-.lifter-svg .fig-bar-group line {
-  stroke-width: 4;
-}
-
-.fig-head {
-  fill: var(--ink);
-  stroke: none;
-}
-
-/* ─── Deadlift animation ─────────────────────────────────────────────────────
-
-  Timing shape:
-    0–12%   → hold at setup (bent)
-    12–42%  → lift to lockout
-    42–62%  → hold at lockout (upright)
-    62–88%  → lower back to setup
-    88–100% → hold at setup
-
-─────────────────────────────────────────────────────────────────────────────── */
-
-.fig-spine {
-  transform-origin: 0px 0px;
-  animation: deadlift-spine 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-spine {
-  0%, 12%   { transform: rotate(55deg); }
-  42%, 62%  { transform: rotate(0deg); }
-  88%, 100% { transform: rotate(55deg); }
-}
-
-.fig-leg-l {
-  transform-origin: 0px 0px;
-  animation: deadlift-leg-l 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-leg-l {
-  0%, 12%   { transform: rotate(-8deg); }
-  42%, 62%  { transform: rotate(8deg); }
-  88%, 100% { transform: rotate(-8deg); }
-}
-
-.fig-leg-r {
-  transform-origin: 0px 0px;
-  animation: deadlift-leg-r 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-leg-r {
-  0%, 12%   { transform: rotate(8deg); }
-  42%, 62%  { transform: rotate(-8deg); }
-  88%, 100% { transform: rotate(8deg); }
-}
-
-.fig-shin-l {
-  transform-origin: 0px 0px;
-  animation: deadlift-shin-l 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-shin-l {
-  0%, 12%   { transform: rotate(-18deg); }
-  42%, 62%  { transform: rotate(0deg); }
-  88%, 100% { transform: rotate(-18deg); }
-}
-
-.fig-shin-r {
-  transform-origin: 0px 0px;
-  animation: deadlift-shin-r 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-shin-r {
-  0%, 12%   { transform: rotate(18deg); }
-  42%, 62%  { transform: rotate(0deg); }
-  88%, 100% { transform: rotate(18deg); }
-}
-
-.fig-bar-group {
-  animation: deadlift-bar 4s ease-in-out infinite;
-}
-
-@keyframes deadlift-bar {
-  0%, 12%   { transform: translateY(0px); }
-  42%, 62%  { transform: translateY(-96px); }
-  88%, 100% { transform: translateY(0px); }
-}
-
 /* ─── Nav ────────────────────────────────────────────────────────────────────── */
 
 .top-nav {
@@ -529,25 +417,15 @@ input:focus {
 /* ─── Responsive ────────────────────────────────────────────────────────────── */
 
 @media (max-width: 1040px) {
-  .hero-skeleton {
-    right: 4%;
-    width: 180px;
-    height: 280px;
-    opacity: 0.07;
-  }
-
   .steps-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
 }
 
 @media (max-width: 720px) {
   .hero-section {
     padding: 18px 16px 56px;
-  }
-
-  .hero-skeleton {
-    display: none;
   }
 
   h1 {
@@ -597,6 +475,7 @@ input:focus {
     align-items: flex-start;
     gap: 12px;
   }
+
 }
 
 @media (max-width: 440px) {

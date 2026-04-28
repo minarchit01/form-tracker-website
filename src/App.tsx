@@ -57,49 +57,6 @@ function ArrowIcon({ className }: IconProps) {
   );
 }
 
-function HeroBackground() {
-  return (
-    <div className="hero-skeleton" aria-hidden="true">
-      <svg viewBox="0 0 120 220" fill="none" className="lifter-svg">
-        {/* Hip anchor — all body groups pivot from here */}
-        <g transform="translate(60,130)">
-          {/* Spine + head + arms (all rotate together as torso leans) */}
-          <g className="fig-spine">
-            <line x1="0" y1="0" x2="0" y2="-78" />
-            <circle cx="0" cy="-91" r="11" className="fig-head" />
-            <g transform="translate(0,-58)">
-              <line x1="0" y1="0" x2="-20" y2="48" />
-              <line x1="0" y1="0" x2="20" y2="48" />
-            </g>
-          </g>
-          {/* Left leg */}
-          <g className="fig-leg-l">
-            <line x1="0" y1="0" x2="-8" y2="52" />
-            <g transform="translate(-8,52)">
-              <g className="fig-shin-l">
-                <line x1="0" y1="0" x2="-4" y2="44" />
-              </g>
-            </g>
-          </g>
-          {/* Right leg */}
-          <g className="fig-leg-r">
-            <line x1="0" y1="0" x2="8" y2="52" />
-            <g transform="translate(8,52)">
-              <g className="fig-shin-r">
-                <line x1="0" y1="0" x2="4" y2="44" />
-              </g>
-            </g>
-          </g>
-        </g>
-        {/* Bar — rises from floor to hip height during the lift */}
-        <g className="fig-bar-group">
-          <line x1="12" y1="226" x2="108" y2="226" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 function Wordmark() {
   return (
     <a className="brand-mark" href="#top" aria-label="Repp home">
@@ -212,8 +169,6 @@ function App() {
     <>
       <main className="site-shell">
         <section className="hero-section" aria-labelledby="hero-title">
-          <HeroBackground />
-
           <nav className="top-nav" aria-label="Primary navigation">
             <Wordmark />
           </nav>
